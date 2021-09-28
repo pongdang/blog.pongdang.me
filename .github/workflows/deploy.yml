@@ -1,0 +1,25 @@
+name: deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-build-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ hashFiles('**/yarn.lock') }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Install packages
+        run: yarn install
+      - name: Run a deploy
+        run: bash deploy.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
