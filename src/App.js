@@ -1,11 +1,20 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
+const GlobalStyle = createGlobalStyle`
+body {
+  padding:0;
+  margin:0;
+}
+`;
 function App() {
   return (
-    <Container>
-      <Button>버튼1</Button>
-      <Button danger>버튼2</Button>
-    </Container>
+    <>
+      <GlobalStyle />
+      <Container>
+        <Button>버튼1</Button>
+        <Button danger>버튼2</Button>
+      </Container>
+    </>
   );
 }
 
