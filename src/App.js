@@ -8,14 +8,17 @@ body {
 }
 `;
 
+const Card = styled.div`
+  background-color: white;
+`;
+
 const Container = styled.div`
   height: 100vh;
   width: 100%;
   background-color: pink;
-`;
-
-const Card = styled.div`
-  background-color: white;
+  ${Card} {
+    background-color: blue;
+  }
 `;
 
 const Button = styled.button`
