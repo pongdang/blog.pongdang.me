@@ -1,9 +1,9 @@
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
-import Expenses from "./routes/expenses";
-import Invoices from "./routes/invoices";
-import Invoice from "./routes/invoice";
+import Expenses from "./pages/expenses";
+import Invoices from "./pages/invoices";
+import Invoice from "./pages/invoice";
 
 ReactDOM.render(
   <BrowserRouter>
