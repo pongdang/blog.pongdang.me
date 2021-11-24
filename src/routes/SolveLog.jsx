@@ -35,7 +35,7 @@ export default function SolveLog() {
               return {
                 display: "block",
                 margin: "1rem 0",
-                color: isActive ? "red" : "",
+                color: isActive ? "red" : "black",
                 textDecoration: "none",
               };
             }}
