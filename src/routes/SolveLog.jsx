@@ -39,7 +39,7 @@ export default function SolveLog() {
                 textDecoration: "none",
               };
             }}
-            to={`/solveLog/${sloveLogItem.number}`}
+            to={`/solve-log/${sloveLogItem.number}`}
             key={sloveLogItem.number}
           >
             {sloveLogItem.name}

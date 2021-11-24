@@ -39,7 +39,7 @@ export default function StudyLog() {
                 textDecoration: "none",
               };
             }}
-            to={`/studyLog/${studyLogItem.number}`}
+            to={`/study-log/${studyLogItem.number}`}
             key={studyLogItem.number}
           >
             {studyLogItem.name}
