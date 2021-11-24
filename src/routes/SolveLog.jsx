@@ -28,7 +28,7 @@ export default function SolveLog() {
           let filter = searchParams.get("filter");
           if (!filter) return true;
           let name = sloveLogItem.name.toLowerCase();
-          return name.startsWith(filter.toLowerCase());
+          return name.includes(filter.toLowerCase());
         }).map((sloveLogItem) => (
           <NavLink
             style={({ isActive }) => {

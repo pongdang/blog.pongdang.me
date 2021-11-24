@@ -28,7 +28,7 @@ export default function StudyLog() {
           let filter = searchParams.get("filter");
           if (!filter) return true;
           let name = studyLogItem.name.toLowerCase();
-          return name.startsWith(filter.toLowerCase());
+          return name.includes(filter.toLowerCase());
         }).map((studyLogItem) => (
           <NavLink
             style={({ isActive }) => {
