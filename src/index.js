@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./Components/Home";
 import SolveLog from "./routes/SolveLog";
 import SolveLogItem from "./routes/SolveLogItem";
@@ -14,6 +14,7 @@ import SolveLogIndex from "./Components/SolveLogIndex";
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
+      <Route exact path='/' element={<Navigate to='/home' />}></Route>
       <Route path='/' element={<App />}>
         <Route path='study-log' element={<StudyLog />}>
           <Route index element={<StudyLogIndex />} />
