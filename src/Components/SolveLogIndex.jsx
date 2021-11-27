@@ -1,9 +1,21 @@
+/** @jsxImportSource @emotion/react */
 import React from "react";
+import styled from "@emotion/styled";
 
 export default function SolveLogIndex() {
   return (
-    <main style={{ padding: "1rem" }}>
+    <WrapperMain>
       <p>문제 푼 것을 기록하는 페이지 입니다!</p>
-    </main>
+    </WrapperMain>
   );
 }
+
+const WrapperMain = styled.main`
+  padding: 1rem 2rem;
+  background-color: #414345;
+  width: 100%;
+  border-radius: 32px;
+  margin-left: 1rem;
+  color: white;
+  font-size: 1.2rem;
+`;

@@ -1,18 +1,15 @@
+/** @jsxImportSource @emotion/react */
 import { NavLink, Outlet, useSearchParams } from "react-router-dom";
 import { getSloveLog } from "../data/solveData";
+import styled from "@emotion/styled";
 
 export default function SolveLog() {
   const SloveLog = getSloveLog();
   let [searchParams, setSearchParams] = useSearchParams();
 
   return (
-    <div style={{ display: "flex" }}>
-      <nav
-        style={{
-          borderRight: "solid 1px",
-          padding: "1rem",
-        }}
-      >
+    <WrapperDiv>
+      <StyledNav>
         <input
           value={searchParams.get("filter") || ""}
           onChange={(event) => {
@@ -35,7 +32,7 @@ export default function SolveLog() {
               return {
                 display: "block",
                 margin: "1rem 0",
-                color: isActive ? "red" : "black",
+                color: isActive ? "red" : "#ffc0c8",
                 textDecoration: "none",
               };
             }}
@@ -45,8 +42,20 @@ export default function SolveLog() {
             {sloveLogItem.name}
           </NavLink>
         ))}
-      </nav>
+      </StyledNav>
       <Outlet />
-    </div>
+    </WrapperDiv>
   );
 }
+
+const WrapperDiv = styled.div`
+  display: flex;
+`;
+
+const StyledNav = styled.nav`
+  font-size: 1.3rem;
+  background-color: #414345;
+  border-radius: 32px;
+  padding: 1rem 2rem;
+  color: white;
+`;
