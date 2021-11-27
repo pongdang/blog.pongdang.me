@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import "./App.css";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, NavLink, Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 
@@ -9,9 +9,45 @@ function App() {
     <WrapperDiv>
       <HomeLink to='/home'>PONGDANG's Blog</HomeLink>
       <StyledNav>
-        <StyledLink to='/study-log'>StudyLog</StyledLink>
-        <StyledLink to='/home'>HOME</StyledLink>
-        <StyledLink to='/solve-log'>SolveLog</StyledLink>
+        <StyledLink
+          style={({ isActive }) => {
+            return {
+              display: "block",
+              margin: "1rem 0",
+              color: isActive ? "red" : "#ffc0c8",
+              textDecoration: "none",
+            };
+          }}
+          to='/study-log'
+        >
+          StudyLog
+        </StyledLink>
+        <StyledLink
+          style={({ isActive }) => {
+            return {
+              display: "block",
+              margin: "1rem 0",
+              color: isActive ? "red" : "#ffc0c8",
+              textDecoration: "none",
+            };
+          }}
+          to='/home'
+        >
+          HOME
+        </StyledLink>
+        <StyledLink
+          style={({ isActive }) => {
+            return {
+              display: "block",
+              margin: "1rem 0",
+              color: isActive ? "red" : "#ffc0c8",
+              textDecoration: "none",
+            };
+          }}
+          to='/solve-log'
+        >
+          SolveLog
+        </StyledLink>
       </StyledNav>
       <Outlet />
     </WrapperDiv>
@@ -46,7 +82,7 @@ const HomeLink = styled(Link)`
   color: whitesmoke;
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(NavLink)`
   ${linkReset}
   font-weight: bold;
   font-size: 1.4rem;
