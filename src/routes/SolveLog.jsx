@@ -58,4 +58,5 @@ const StyledNav = styled.nav`
   border-radius: 32px;
   padding: 1rem 2rem;
   color: white;
+  font-weight: bold;
 `;
