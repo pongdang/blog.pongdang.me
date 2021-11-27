@@ -1,14 +1,8 @@
 import "./App.css";
 import { Outlet, Link } from "react-router-dom";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 function App() {
-  const StyledLink = styled(Link)`
-    text-decoration: none;
-    color: black;
-    padding: 10px;
-  `;
-
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>PONGDANG's Blog</h1>
@@ -26,5 +20,11 @@ function App() {
     </div>
   );
 }
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  padding: 10px;
+`;
 
 export default App;
