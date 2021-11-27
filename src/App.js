@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import "./App.css";
-import { Outlet, NavLink, Link } from "react-router-dom";
+import { Outlet, NavLink, Link, useLocation } from "react-router-dom";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 
@@ -9,50 +9,19 @@ function App() {
     <WrapperDiv>
       <HomeLink to='/home'>PONGDANG's Blog</HomeLink>
       <StyledNav>
-        <StyledLink
-          style={({ isActive }) => {
-            return {
-              display: "block",
-              margin: "1rem 0",
-              color: isActive ? "red" : "#ffc0c8",
-              textDecoration: "none",
-            };
-          }}
-          to='/study-log'
-        >
-          StudyLog
-        </StyledLink>
-        <StyledLink
-          style={({ isActive }) => {
-            return {
-              display: "block",
-              margin: "1rem 0",
-              color: isActive ? "red" : "#ffc0c8",
-              textDecoration: "none",
-            };
-          }}
-          to='/home'
-        >
-          HOME
-        </StyledLink>
-        <StyledLink
-          style={({ isActive }) => {
-            return {
-              display: "block",
-              margin: "1rem 0",
-              color: isActive ? "red" : "#ffc0c8",
-              textDecoration: "none",
-            };
-          }}
-          to='/solve-log'
-        >
-          SolveLog
-        </StyledLink>
+        <StyledLink to='/study-log'>StudyLog</StyledLink>
+        <StyledLink to='/home'>HOME</StyledLink>
+        <StyledLink to='/solve-log'>SolveLog</StyledLink>
       </StyledNav>
       <Outlet />
     </WrapperDiv>
   );
 }
+
+const linkResetStyle = css`
+  text-decoration: none;
+  color: black;
+`;
 
 const WrapperDiv = styled.div`
   overflow-x: hidden;
@@ -68,13 +37,8 @@ const StyledNav = styled.nav`
   margin: 20px 0;
 `;
 
-const linkReset = css`
-  text-decoration: none;
-  color: black;
-`;
-
 const HomeLink = styled(Link)`
-  ${linkReset}
+  ${linkResetStyle}
   display: block;
   text-align: center;
   font-weight: bold;
@@ -82,14 +46,29 @@ const HomeLink = styled(Link)`
   color: whitesmoke;
 `;
 
-const StyledLink = styled(NavLink)`
-  ${linkReset}
-  font-weight: bold;
-  font-size: 1.4rem;
-  padding: 20px 44px;
-  border-radius: 30px;
-  background-color: #434343;
-  color: #ffc0c8;
-`;
-
+function StyledLink(props) {
+  const location = useLocation();
+  const path = location.pathname;
+  const to = props.to;
+  return (
+    <NavLink
+      css={css`
+        ${linkResetStyle}
+        display: block;
+        margin: 1rem 0;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.4rem;
+        padding: 20px 44px;
+        border-radius: 30px;
+        color: ${to.includes(path) ? "red" : "#ffc0c8"};
+        background-color: ${to.includes(path) ? "#ffdde1" : "#434343"};
+        &:hover {
+          background-color: #ffdde1;
+        }
+      `}
+      {...props}
+    />
+  );
+}
 export default App;
